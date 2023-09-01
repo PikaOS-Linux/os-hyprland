@@ -35,7 +35,7 @@ fi
 # Install PikaOS sources
 apt install wget -y
 wget https://ppa.pika-os.com/dists/lunar/pika-sources.deb
-sudo apt install ./pika-sources.deb --yes --option Acquire::Retries=5 --option Acquire::http::Timeout=100 --option Dpkg::Options::="--force-confnew"
+apt install ./pika-sources.deb --yes --option Acquire::Retries=5 --option Acquire::http::Timeout=100 --option Dpkg::Options::="--force-confnew"
 rm -rf ./pika-sources.deb
 apt-get update -y
 
