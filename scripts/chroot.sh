@@ -44,21 +44,14 @@ sudo apt install initramfs-tools adwaita-icon-theme humanity-icon-theme amdgpu-d
 sudo apt install update-notifier --yes --option Acquire::Retries=5
 sudo apt install update-manager --yes --option Acquire::Retries=5
 sudo apt install ubuntu-release-upgrader-gtk --yes --option Acquire::Retries=5
+sudo apt install kernel-pika  --yes --option Acquire::Retries=5
 sudo apt install booster-placeholder --yes --option Acquire::Retries=5
 sudo mkdir -p /usr/lib/firmware/
 if echo "${INSTALL}" | grep nvidia-driver
 then
-    sudo apt install  nvidia-kernel-common-535  --yes --option Acquire::Retries=5
-    sudo apt install  kernel-pika  --yes --option Acquire::Retries=5
-    ls /usr/src
-    ls /boot
-    sudo apt install  nvidia-dkms-535  --yes --option Acquire::Retries=5 || echo "Workaround: Link chroot kernel to host kernel..."
-    ln -sfv /boot/config-6.5.0-pikaos /boot/config-$(uname -r)
-    ln -sfv /boot/initrd.img-6.5.0-pikaos /boot/initrd.img-$(uname -r)
-    ln -sfv /usr/src/linux-headers-6.5.0-pikaos /usr/src/linux-headers-$(uname -r)
-    ln -sfv /boot/System.map-6.5.0-pikaos /boot/System.map-$(uname -r)
-    ln -sfv /boot/vmlinuz-6.5.0-pikaos /boot/vmlinuz-$(uname -r)
-    sudo dpkg --configure nvidia-dkms-535 && sudo apt-get install -yf
+    sudo apt install  vidia-6.5.0-pikaos-module-535 --yes --option Acquire::Retries=5
+    sudo apt install  nvidia-kernel-common-535 --yes --option Acquire::Retries=5
+    sudo apt install  nvidia-pika-kernel-module-535 --yes --option Acquire::Retries=5
 fi
 
 # Update package definitions
